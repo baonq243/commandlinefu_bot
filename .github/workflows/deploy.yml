@@ -33,4 +33,5 @@ jobs:
           tags: ghcr.io/baonq243/commandlinefubot:latest
       - name: run docker
         run: |
+
           docker-compose up -d

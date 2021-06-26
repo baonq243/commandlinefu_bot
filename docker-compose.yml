@@ -2,3 +2,7 @@ version: '3'
 services:
   app:
     image: ghcr.io/baonq243/commandlinefubot:latest
+    environment:
+      - CHAT_ID=${{ secrets.CHAT_ID }}
+      - TOKEN=${{ secrets.TOKEN }}
+
