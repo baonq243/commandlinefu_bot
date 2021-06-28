@@ -31,3 +31,9 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/baonq243/commandlinefubot:latest
+      - name: run docker
+        env:
+          CHAT_ID=${{ secrets.CHAT_ID }}
+          TOKEN=${{ secrets.TOKEN }}
+        run: |
+          docker-compose up -d
