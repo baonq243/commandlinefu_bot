@@ -8,6 +8,8 @@ ADD requirements.txt .
 
 ADD main.py .
 
+ADD list_id.txt .
+
 RUN pip3 install -r requirements.txt
 
 CMD [ "python", "./main.py" ]
