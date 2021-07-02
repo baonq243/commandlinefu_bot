@@ -36,4 +36,6 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
           TOKEN: ${{ secrets.TOKEN }}
         run: |
+          docker-compose down
+          docker-compose pull
           docker-compose up -d
