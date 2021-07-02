@@ -26,23 +26,24 @@ def parser_tele(msg):
 def get_command():
     try:
         n = 0
-        while n < 10000:
-            r = requests.get('http://www.commandlinefu.com/commands/browse/sort-by-votes/json/{}'.format(n))
-            for i in r.json():
-                with open('/data_bot/list_id.txt', 'a+') as r:
-                    lines = r.read().splitlines()
-                if i["id"] not in lines:
-                    with open('/data_bot/list_id.txt', 'a+') as w:
-                        w.write(i["id"] + "\n")
-                        msg = "*{}* \| _Vote_: `{}`\n" \
-                              "\n`{}`\n" \
-                              "\n{}".format(parser_tele(i["summary"]), parser_tele(i["votes"]),
-                                            parser_tele(i["command"]), parser_tele(i["url"]))
-                        logger.info("{} - {} - {} - {}".format(i["summary"], i["votes"], i["command"], i["url"]))
-                        bot.send_message(CHAT_ID, msg, parse_mode=telegram.ParseMode.MARKDOWN_V2,
-                                         disable_web_page_preview=True)
-                    return
-            n = n + 25
+        with open('/data_bot/list_id.txt', 'a+'):
+            while n < 10000:
+                r = requests.get('http://www.commandlinefu.com/commands/browse/sort-by-votes/json/{}'.format(n))
+                for i in r.json():
+                    with open('/data_bot/list_id.txt', 'r') as r:
+                        lines = r.read().splitlines()
+                    if i["id"] not in lines:
+                        with open('/data_bot/list_id.txt', 'a+') as w:
+                            w.write(i["id"] + "\n")
+                            msg = "*{}* \| _Vote_: `{}`\n" \
+                                  "\n`{}`\n" \
+                                  "\n{}".format(parser_tele(i["summary"]), parser_tele(i["votes"]),
+                                                parser_tele(i["command"]), parser_tele(i["url"]))
+                            logger.info("{} - {} - {} - {}".format(i["summary"], i["votes"], i["command"], i["url"]))
+                            bot.send_message(CHAT_ID, msg, parse_mode=telegram.ParseMode.MARKDOWN_V2,
+                                             disable_web_page_preview=True)
+                        return
+                n = n + 25
     except Exception as e:
         logger.error(e)
         print(e)
