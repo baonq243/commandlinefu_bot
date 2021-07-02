@@ -57,6 +57,7 @@ if __name__ == '__main__':
     CHAT_ID = os.getenv('CHAT_ID')
     list_escape = ['_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!']
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
+    job()
     schedule.every(10).minutes.do(job)
     while True:
         schedule.run_pending()
