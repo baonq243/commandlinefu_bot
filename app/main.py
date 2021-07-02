@@ -7,6 +7,14 @@ import schedule
 import time
 import os
 import datetime
+import logging
+from logging.handlers import RotatingFileHandler
+
+
+logging.basicConfig(filename="running.log", level=logging.INFO, format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s")
+logger = logging.getLogger('my_bot')
+handler = RotatingFileHandler('running.log', maxBytes=500000, backupCount=5)
+logger.addHandler(handler)
 
 
 def parser_tele(msg):
@@ -30,11 +38,13 @@ def get_command():
                               "\n`{}`\n" \
                               "\n{}".format(parser_tele(i["summary"]), parser_tele(i["votes"]),
                                             parser_tele(i["command"]), parser_tele(i["url"]))
+                        logger.info(i["summary"], i["votes"], i["command"], i["url"])
                         bot.send_message(CHAT_ID, msg, parse_mode=telegram.ParseMode.MARKDOWN_V2,
                                          disable_web_page_preview=True)
                     return
             n = n + 25
     except Exception as e:
+        logger.error(e)
         print(e)
 
 
