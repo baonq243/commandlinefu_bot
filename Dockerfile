@@ -2,6 +2,8 @@ FROM python:3
 
 LABEL org.opencontainers.image.source https://github.com/baonq243/commandlinefu_bot
 
+RUN mkdir /app
+
 WORKDIR /app
 
 ADD requirements.txt .
