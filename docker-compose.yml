@@ -4,11 +4,9 @@ services:
     image: ghcr.io/baonq243/commandlinefubot:latest
     volumes:
       - ./app:/app
-      - data_bot:/data_bot
+      - /data_bot:/data_bot
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
       - CHAT_ID
       - TOKEN
-volumes:
-  data_bot:
