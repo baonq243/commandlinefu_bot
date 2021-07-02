@@ -3,7 +3,9 @@ services:
   app:
     image: ghcr.io/baonq243/commandlinefubot:latest
     volumes:
-      - /bot_app:/app
+      - app_data:/app
     environment:
       - CHAT_ID
       - TOKEN
+volumes:
+  app_data:

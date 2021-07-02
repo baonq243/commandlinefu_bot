@@ -26,11 +26,12 @@ def get_command():
                 if i["id"] not in lines:
                     with open('list_id.txt', 'a+') as w:
                         w.write(i["id"] + "\n")
-                        msg = "`*{}*` (_Vote_: `{}`)\n" \
-                              "\n`*{}*`\n" \
-                              "\n`{}`".format(parser_tele(i["summary"]), parser_tele(i["votes"]),
-                                              parser_tele(i["command"]), parser_tele(i["url"]))
-                        bot.send_message(CHAT_ID, msg, parse_mode=telegram.ParseMode.MARKDOWN_V2)
+                        msg = "*{}* (_Vote_: `{}`)\n" \
+                              "\n`{}`\n" \
+                              "\n{}".format(parser_tele(i["summary"]), parser_tele(i["votes"]),
+                                            parser_tele(i["command"]), parser_tele(i["url"]))
+                        bot.send_message(CHAT_ID, msg, parse_mode=telegram.ParseMode.MARKDOWN_V2,
+                                         disable_web_page_preview=True)
                     return
             n = n + 25
     except Exception as e:
