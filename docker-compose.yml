@@ -4,6 +4,7 @@ services:
     image: ghcr.io/baonq243/commandlinefubot:latest
     volumes:
       - ./app:/app
+      - /list_id.txt:/list_id.txt
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
