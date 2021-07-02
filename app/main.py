@@ -50,15 +50,14 @@ def get_command():
 
 def job():
     try:
-        today = datetime.datetime.today().weekday()
+        print("RUNNING")
         timenow = datetime.datetime.now().time()
         start = datetime.time(8, 0, 0)
         end1 = datetime.time(20, 0, 0)
-        if today in range(0, 4):
-            if start <= timenow <= end1:
-                get_command()
-            else:
-                print("De yen cho tao ngu")
+        if start <= timenow <= end1:
+            get_command()
+        else:
+            print("De yen cho tao ngu")
     except Exception as e:
         print(e)
 
