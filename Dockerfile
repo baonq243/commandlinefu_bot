@@ -6,11 +6,7 @@ RUN mkdir /app
 
 WORKDIR /app
 
-ADD requirements.txt .
-
-ADD main.py .
-
-ADD list_id.txt .
+ADD ./app .
 
 RUN pip3 install -r requirements.txt
 
