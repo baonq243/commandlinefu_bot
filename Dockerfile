@@ -4,6 +4,8 @@ LABEL org.opencontainers.image.source https://github.com/baonq243/commandlinefu_
 
 RUN mkdir /app
 
+RUN mkdir /data_bot
+
 WORKDIR /app
 
 ADD ./app .

@@ -29,10 +29,10 @@ def get_command():
         while n < 10000:
             r = requests.get('http://www.commandlinefu.com/commands/browse/sort-by-votes/json/{}'.format(n))
             for i in r.json():
-                with open('/list_id.txt', 'a+') as r:
+                with open('/data_bot/list_id.txt', 'a+') as r:
                     lines = r.read().splitlines()
                 if i["id"] not in lines:
-                    with open('/list_id.txt', 'a+') as w:
+                    with open('/data_bot/list_id.txt', 'a+') as w:
                         w.write(i["id"] + "\n")
                         msg = "*{}* \| _Vote_: `{}`\n" \
                               "\n`{}`\n" \
