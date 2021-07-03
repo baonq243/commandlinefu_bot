@@ -69,7 +69,7 @@ if __name__ == '__main__':
     list_escape = ['_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!']
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
     job()
-    schedule.every(10).minutes.do(job)
+    schedule.every().hour.do(job)
     while True:
         schedule.run_pending()
         time.sleep(1)
